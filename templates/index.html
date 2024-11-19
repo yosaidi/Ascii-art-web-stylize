@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Generator</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <!-- Form with conditional fade-out class -->
+    <form action="/" method="post" class="{{ if .Result }}fade-out hidden{{ end }}">
+        <h1>ASCII Art Generator</h1>
+        
+        <label for="text">Enter your desired text here:</label>
+        <textarea id="text" name="text" rows="3" maxlength="300" required></textarea>
+        
+        <div class="radio-group">
+            <input type="radio" id="standard" name="template" value="standard" checked required>
+            <label for="standard">Standard</label><br>
+            
+            <input type="radio" id="shadow" name="template" value="shadow" required>
+            <label for="shadow">Shadow</label><br>
+            
+            <input type="radio" id="thinkertoy" name="template" value="thinkertoy" required>
+            <label for="thinkertoy">Thinkertoy</label><br>
+        </div>
+        
+        <button type="submit">Generate ASCII Art</button>
+    </form>
+
+    <!-- Result Display Area with fade-in animation -->
+    {{ if .Result }}
+    <pre class="ascii-result fade-in">{{ .Result }}</pre>
+    {{ end }}
+</body>
+</html>
